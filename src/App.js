@@ -1,5 +1,5 @@
 
-import Header from './componente/Header/Header';
+
 import styled from "styled-components";
 import Pesquisa from './componente/pesquisa/Pesquisa';
 import UltimosLancamentos from './componente/UltimosLancamentos/UltimosLancamentos';
@@ -14,8 +14,7 @@ li {
 `
 function App() {
   return (
-    <AppContainer>
-      <Header/>
+    <AppContainer>      
       <Pesquisa/>
       <UltimosLancamentos/>
     </AppContainer>

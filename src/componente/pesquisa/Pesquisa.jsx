@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import Input from '../Input/Input'
-import { livros } from './DadosPesquisa'
+import { useEffect } from 'react'
+import { getLivros } from '../servicos/livros'
 
 const PesquisaContainer = styled.section`
     background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
@@ -44,6 +45,18 @@ const Resultado = styled.div`
 
 function Pesquisa(){
   const [livrosPesquisados, setLivrosPesquisados] = useState([])
+  const [livros, setLivros] = useState([])
+
+  async function fetch(){
+    const livrosApi = await getLivros()
+    console.log("resp", livrosApi)
+    setLivros(livrosApi)
+  }
+
+  useEffect(()=>{
+    fetch()
+  },[])
+
   return(
     <PesquisaContainer>
       <Titulo>Vamos buscar algo para ler?</Titulo>
@@ -57,7 +70,7 @@ function Pesquisa(){
         }}/>      
         {livrosPesquisados.map(livro  =>(
           <Resultado>            
-            <img src={livro.src} alt="nome" />
+            {/* <img src={livro.src} alt="nome" /> */}
             <p>{livro.nome}</p>
           </Resultado>
         ))}  

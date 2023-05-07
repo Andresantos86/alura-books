@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import IconesReader from "../iconesReader/IconesReader";
 import Logo from "../Logo/Logo";
 import OpcoesHeader from "../opcoesHeader/OpcoesHeader";
@@ -12,7 +13,8 @@ const HeaderContainer = styled.header`
 function Header() {
   return (
     <HeaderContainer>
-      <Logo />
+      <Link to={"/"}><Logo /></Link>
+     
       <OpcoesHeader />
       <IconesReader />
     </HeaderContainer>

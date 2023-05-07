@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Opcao = styled.li`
@@ -18,14 +19,28 @@ const Opcoes = styled.ul`
 
 const textoOpcoes = ['CATEGORIAS', 'FAVORITOS', 'MINHA ESTANTE']
 
+const mudaTexto=(texto) =>{
+  if(texto === 'CATEGORIAS'){
+    return 'categorias'
+  }else if(texto === 'FAVORITOS') {
+    return 'favoritos'
+  } else if(texto === 'MINHA ESTANTE'){
+    return 'estante'
+  }else{
+    return
+  }
+}
+
 function OpcoesHeader() {
-    return (
-        <Opcoes>
-            { textoOpcoes.map ( (texto) => (
-                <Opcao><p>{texto}</p></Opcao>
-            ) ) }
-        </Opcoes>
-    )
+  return (
+    <Opcoes>
+      {textoOpcoes.map((texto) => (
+        <Link to={`/${mudaTexto(texto)}`}>
+          <Opcao><p>{texto}</p></Opcao>
+        </Link>
+      ))}
+    </Opcoes>
+  )
 }
 
 export default OpcoesHeader
